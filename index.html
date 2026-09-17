@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Management System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">SMS</span>
+        <span class="brand-name">Student Management</span>
+      </div>
+      <div class="stats" id="stats"></div>
+    </header>
+
+    <main class="layout">
+      <!-- Form panel -->
+      <section class="panel form-panel">
+        <h2 id="formTitle">Add student</h2>
+        <form id="studentForm">
+          <input type="hidden" id="studentId">
+
+          <label>Full name
+            <input type="text" id="name" required placeholder="e.g. Ananya Rajan">
+          </label>
+
+          <div class="row">
+            <label>Roll number
+              <input type="text" id="rollNo" required placeholder="e.g. 21CS045">
+            </label>
+            <label>Class / Grade
+              <input type="text" id="grade" required placeholder="e.g. 10-A">
+            </label>
+          </div>
+
+          <div class="row">
+            <label>Email
+              <input type="email" id="email" placeholder="student@email.com">
+            </label>
+            <label>Phone
+              <input type="tel" id="phone" placeholder="+91 90000 00000">
+            </label>
+          </div>
+
+          <label>Attendance (%)
+            <input type="number" id="attendance" min="0" max="100" value="100">
+          </label>
+
+          <label>Notes
+            <textarea id="notes" rows="2" placeholder="Optional remarks"></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="btn primary" id="submitBtn">Add student</button>
+            <button type="button" class="btn ghost" id="cancelEdit" hidden>Cancel</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- List panel -->
+      <section class="panel list-panel">
+        <div class="list-header">
+          <h2>Students</h2>
+          <div class="toolbar">
+            <input type="search" id="searchBox" placeholder="Search by name, roll no, or class...">
+            <select id="sortBy">
+              <option value="name">Sort: Name</option>
+              <option value="rollNo">Sort: Roll No.</option>
+              <option value="grade">Sort: Class</option>
+              <option value="attendance">Sort: Attendance</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="emptyState" class="empty-state" hidden>
+          <p>No students yet.</p>
+          <span>Add your first student using the form on the left.</span>
+        </div>
+
+        <div class="table-wrap">
+          <table id="studentTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Roll No.</th>
+                <th>Class</th>
+                <th>Attendance</th>
+                <th>Contact</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
